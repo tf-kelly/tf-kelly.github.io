@@ -114,11 +114,10 @@ main { max-width: var(--content-max); min-width: 0; }
 }
 
 .portrait {
-  display: block;
-  width: 70%;
-  max-width: 180px;
+  float: right;
+  width: 140px;
   height: auto;
-  margin-top: 0.5rem;
+  margin: 0.25rem 0 1rem 1.5rem;
   border: 1px solid var(--rule);
 }
 
@@ -169,7 +168,10 @@ strong, b { font-weight: 600; }
 
 /* ── CONTACT BLOCK (HOME PAGE) ──────────────────────────────── */
 
-.contact { margin-bottom: 2.25rem; }
+.contact {
+  margin-bottom: 2.25rem;
+  display: flow-root;   /* contains the floated portrait */
+}
 
 .contact .name {
   font-size: 1.35rem;
@@ -263,7 +265,7 @@ ul.plain li { margin: 0 0 0.6rem; }
   .sidebar { position: static; }
   .sidebar-image { max-width: 320px; }
   .sidebar h1 { font-size: 1.7rem; }
-  .portrait { display: none; }
+  .portrait { width: 110px; margin-left: 1rem; }
   .footer { grid-column: 1; margin-top: 4rem; }
   main h2 { margin-top: 2.25rem; }
   :root { --size-body: 1.1rem; }
