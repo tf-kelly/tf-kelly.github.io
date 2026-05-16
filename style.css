@@ -1,0 +1,284 @@
+/* ────────────────────────────────────────────────────────────
+   Thomas Kelly — personal site
+   Two-column layout: sidebar (image, name, nav, portrait) +
+   main content. EB Garamond body, white background, warm-brown
+   accent pulled from papyrus ink. Mobile: sidebar stacks above.
+   ──────────────────────────────────────────────────────────── */
+
+:root {
+  --bg:           #fefefe;
+  --text:         #232323;
+  --heading:      #111;
+  --muted:        #6a6a6a;
+  --accent:       #6b3410;
+  --accent-hover: #4a2308;
+  --rule:         #e0dcd6;
+
+  --sidebar-width: 260px;
+  --content-max:   640px;
+  --column-gap:    4rem;
+  --page-pad-y:    3rem;
+  --page-pad-x:    2rem;
+  --max-width:     1100px;
+
+  --font-body:     'EB Garamond', Garamond, Georgia, 'Times New Roman', serif;
+  --size-body:     1.15rem;
+  --leading:       1.55;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html { font-size: 16px; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-body);
+  font-size: var(--size-body);
+  line-height: var(--leading);
+  font-feature-settings: "kern" 1, "liga" 1, "onum" 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+/* ── LAYOUT ─────────────────────────────────────────────────── */
+
+.layout {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: var(--page-pad-y) var(--page-pad-x);
+  display: grid;
+  grid-template-columns: var(--sidebar-width) 1fr;
+  column-gap: var(--column-gap);
+  align-items: start;
+}
+
+.sidebar {
+  position: sticky;
+  top: var(--page-pad-y);
+  align-self: start;
+}
+
+main { max-width: var(--content-max); min-width: 0; }
+
+/* ── SIDEBAR ────────────────────────────────────────────────── */
+
+.sidebar-image {
+  display: block;
+  width: 100%;
+  height: auto;
+  margin-bottom: 1.5rem;
+  /* subtle border matches the muted line below — keeps the
+     papyrus from floating on white */
+  border: 1px solid var(--rule);
+}
+
+.sidebar h1 {
+  font-size: 1.55rem;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+  margin: 0 0 1.25rem;
+  line-height: 1.2;
+}
+
+.sidebar h1 a {
+  color: var(--heading);
+  border-bottom: none;
+}
+
+.sidebar h1 a:hover { color: var(--accent); }
+
+.sidebar nav ul {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 2rem;
+}
+
+.sidebar nav li { margin: 0.2rem 0; }
+
+.sidebar nav a {
+  display: inline-block;
+  color: var(--text);
+  border-bottom: none;
+  padding: 0.05rem 0;
+  font-size: 1.08rem;
+}
+
+.sidebar nav a:hover { color: var(--accent); }
+
+.sidebar nav a.current {
+  color: var(--accent);
+  font-style: italic;
+}
+
+.portrait {
+  display: block;
+  width: 70%;
+  max-width: 180px;
+  height: auto;
+  margin-top: 0.5rem;
+  border: 1px solid var(--rule);
+}
+
+/* ── MAIN CONTENT ───────────────────────────────────────────── */
+
+main p { margin: 0 0 1rem; }
+main p:last-child { margin-bottom: 0; }
+
+main h2 {
+  font-size: 1.3rem;
+  font-weight: 500;
+  color: var(--heading);
+  margin: 2.75rem 0 1rem;
+  letter-spacing: 0.01em;
+}
+
+main h2:first-child { margin-top: 0; }
+
+main h3 {
+  font-size: 1.08rem;
+  font-weight: 600;
+  color: var(--heading);
+  margin: 1.75rem 0 0.5rem;
+}
+
+/* Links: warm brown, with a subtle underline-on-hover instead of
+   the default — quieter than a permanent underline, more visible
+   than a colour change alone */
+a {
+  color: var(--accent);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: border-color 120ms ease, color 120ms ease;
+}
+
+a:hover {
+  border-bottom-color: var(--accent);
+}
+
+a:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+  border-bottom-color: transparent;
+}
+
+em, i { font-style: italic; }
+strong, b { font-weight: 600; }
+
+/* ── CONTACT BLOCK (HOME PAGE) ──────────────────────────────── */
+
+.contact { margin-bottom: 2.25rem; }
+
+.contact .name {
+  font-size: 1.35rem;
+  font-weight: 500;
+  color: var(--heading);
+  margin: 0 0 0.15rem;
+  letter-spacing: 0.01em;
+}
+
+.contact .role {
+  color: var(--muted);
+  margin: 0 0 1rem;
+  line-height: 1.45;
+}
+
+.contact .role a { color: var(--muted); }
+.contact .role a:hover { color: var(--accent); border-bottom-color: var(--accent); }
+
+.contact .links {
+  color: var(--muted);
+  line-height: 1.6;
+  font-size: 1.05rem;
+}
+
+.contact .links a { color: var(--accent); }
+
+.orcid-icon {
+  width: 14px;
+  height: 14px;
+  vertical-align: -2px;
+  margin-right: 0.25rem;
+}
+
+/* ── BIBLIOGRAPHIC LISTS ────────────────────────────────────── */
+/* Hanging indent: title flows back when it wraps. No bullets.
+   Standard academic citation look. */
+
+ul.entries {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+ul.entries li {
+  margin: 0 0 0.85rem;
+  padding-left: 1.5em;
+  text-indent: -1.5em;
+}
+
+ul.entries li:last-child { margin-bottom: 0; }
+
+/* For shorter inline lists (Misc page, etc.) */
+ul.plain {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+ul.plain li { margin: 0 0 0.6rem; }
+
+/* The middle dot separator between [text] and [recordings] */
+.sep {
+  color: var(--muted);
+  margin: 0 0.4em;
+}
+
+/* ── FOOTER ─────────────────────────────────────────────────── */
+
+.footer {
+  grid-column: 2;
+  margin-top: 6rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid var(--rule);
+  color: var(--muted);
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+.footer p { margin: 0.25rem 0; }
+.footer a { color: var(--muted); }
+.footer a:hover { color: var(--accent); border-bottom-color: var(--accent); }
+
+/* ── MOBILE ─────────────────────────────────────────────────── */
+
+@media (max-width: 760px) {
+  .layout {
+    grid-template-columns: 1fr;
+    padding: 1.75rem 1.25rem;
+    row-gap: 2rem;
+  }
+  .sidebar { position: static; }
+  .sidebar-image { max-width: 320px; }
+  .sidebar h1 { font-size: 1.7rem; }
+  .portrait { display: none; }
+  .footer { grid-column: 1; margin-top: 4rem; }
+  main h2 { margin-top: 2.25rem; }
+  :root { --size-body: 1.1rem; }
+}
+
+/* ── PRINT ──────────────────────────────────────────────────── */
+/* Keep things sensible if anyone prints a page */
+
+@media print {
+  .sidebar, .footer { display: none; }
+  .layout {
+    display: block;
+    max-width: none;
+    padding: 0;
+  }
+  main { max-width: none; }
+  a { color: inherit; border-bottom: none; }
+}
