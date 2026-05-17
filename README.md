@@ -13,25 +13,32 @@ style.css               All styling
 orcid.svg               Small ORCID icon for the contact block
 ```
 
-Plus three things you need to add yourself:
+Plus things you need to add yourself:
 
 ```
-papyrus.jpg             Sidebar image — P.Berol. 11529 v. crop
-portrait.jpg            Your photo (from Magdalen page for now)
-cv.pdf                  Your CV
+papyrus.jpg                       Sidebar image — P.Berol. 11529 v. crop
+portrait.jpg                      Your photo (from Magdalen page for now)
+cv.pdf                            Your CV
+mildenhall.pdf                    The refereeing essay
+karaoke/high-school-musical.pdf   Greek translation
+karaoke/dont-stop-me-now.pdf      Greek translation
+karaoke/for-good.pdf              Greek translation
+karaoke/dancing-queen.pdf         Greek translation
 ```
 
-## Before deploying — replace these placeholders
+## Before deploying — drop in these files
 
-1. **ORCID iD.** Search `0000-0000-0000-0000` in `index.html` and replace both occurrences (the link target and the displayed text) with your actual ORCID iD.
+1. **`papyrus.jpg`.** Download a high-res copy of the cropped diagram from <https://berlpap.smb.museum/03066/?lang=en> (the 600 dpi original is linked in the database record). Crop to roughly square or vertical-rectangle around the diagram you sent. Save as `papyrus.jpg` (or `.png` — if you change the extension, update `index.html`, `publications.html`, `teaching.html`, and `misc.html`).
 
-2. **`papyrus.jpg`.** Download a high-res copy of the cropped diagram from <https://berlpap.smb.museum/03066/?lang=en> (the 600 dpi original is linked in the database record). Crop to roughly square or vertical-rectangle around the diagram you sent. Save as `papyrus.jpg` (or `.png` — if you change the extension, update `index.html`, `publications.html`, `teaching.html`, and `misc.html`).
+2. **`portrait.jpg`.** Right-click-save the photo from your Magdalen page, save as `portrait.jpg`. The CSS displays it at 140px wide on the home page (alongside the contact block, floated right of your name and details). It appears only on the home page, not on Publications/Teaching/Misc. Anything ≥280px wide should be fine.
 
-3. **`portrait.jpg`.** Right-click-save the photo from your Magdalen page, save as `portrait.jpg`. The CSS displays it at ~180px wide; anything ≥360px should be fine.
+3. **`cv.pdf`.** Drop in your CV.
 
-4. **`cv.pdf`.** Drop in your CV.
+4. **`mildenhall.pdf`.** The refereeing essay. Save the Word doc as PDF, drop in the root folder.
 
-5. **Mildenhall essay & karaoke links.** In `misc.html`, the four `[text]` and `[recordings]` links and the Mildenhall essay link are all `href="#"` (placeholders). Replace with real URLs once you've decided where to host the PDFs/recordings. Options: put the essay PDF in this same folder and link to `mildenhall.pdf`; host recordings on YouTube/SoundCloud and link out.
+5. **Karaoke PDFs.** Put the four Greek text PDFs in the `karaoke/` subfolder, with the filenames shown above. Delete the `karaoke/README.txt` once they're all in place.
+
+If you haven't got all of these ready, the site will still deploy — broken links just won't go anywhere. You can add files later via GitHub Desktop / web UI and they'll appear on the live site within a minute.
 
 ## Deploying to GitHub Pages
 
