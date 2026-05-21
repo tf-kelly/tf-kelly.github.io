@@ -1,29 +1,41 @@
 /* ────────────────────────────────────────────────────────────
-   Thomas Kelly — personal site
-   Two-column layout: sidebar (image, name, nav, portrait) +
-   main content. EB Garamond body, white background, warm-brown
-   accent pulled from papyrus ink. Mobile: sidebar stacks above.
+   Thomas Kelly — "full Michaillat" tech variant
+   Inter (Latin) + Noto Sans (Greek fallback). Cool palette.
+   System-aware dark mode. Tight, engineered vertical rhythm.
    ──────────────────────────────────────────────────────────── */
 
 :root {
-  --bg:           #fefefe;
-  --text:         #232323;
-  --heading:      #111;
-  --muted:        #6a6a6a;
-  --accent:       #6b3410;
-  --accent-hover: #4a2308;
-  --rule:         #e0dcd6;
+  --bg:        #ffffff;
+  --text:      #1f2328;
+  --heading:   #0d1117;
+  --muted:     #656d76;
+  --accent:    #2563a8;     /* cool blue */
+  --accent-2:  #1a4a82;
+  --rule:      #e4e7eb;
+  --chip-bg:   #f4f6f8;
+  --chip-br:   #e0e4e8;
 
-  --sidebar-width: 260px;
-  --content-max:   640px;
-  --column-gap:    4rem;
-  --page-pad-y:    3rem;
-  --page-pad-x:    2rem;
-  --max-width:     1100px;
+  --content-max: 660px;
+  --pad-y: 4rem;
+  --pad-x: 1.5rem;
 
-  --font-body:     'EB Garamond', Garamond, Georgia, 'Times New Roman', serif;
-  --size-body:     1.15rem;
-  --leading:       1.55;
+  --font: 'Inter', 'Noto Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+  --size: 1.0625rem;        /* 17px — smaller, denser than the serif version */
+  --leading: 1.6;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg:       #0d1117;
+    --text:     #c9d1d9;
+    --heading:  #f0f6fc;
+    --muted:    #8b949e;
+    --accent:   #6cb0ff;
+    --accent-2: #92c5ff;
+    --rule:     #21262d;
+    --chip-bg:  #161b22;
+    --chip-br:  #30363d;
+  }
 }
 
 *, *::before, *::after { box-sizing: border-box; }
@@ -34,253 +46,230 @@ body {
   margin: 0;
   background: var(--bg);
   color: var(--text);
-  font-family: var(--font-body);
-  font-size: var(--size-body);
+  font-family: var(--font);
+  font-size: var(--size);
   line-height: var(--leading);
-  font-feature-settings: "kern" 1, "liga" 1, "onum" 1;
+  font-feature-settings: "kern" 1, "liga" 1, "calt" 1, "cv05" 1;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-rendering: optimizeLegibility;
+  letter-spacing: -0.003em;       /* Inter looks best very slightly tightened */
 }
 
-/* ── LAYOUT ─────────────────────────────────────────────────── */
-
-.layout {
-  max-width: var(--max-width);
+.container {
+  max-width: var(--content-max);
   margin: 0 auto;
-  padding: var(--page-pad-y) var(--page-pad-x);
-  display: grid;
-  grid-template-columns: var(--sidebar-width) 1fr;
-  column-gap: var(--column-gap);
-  align-items: start;
+  padding: var(--pad-y) var(--pad-x);
 }
 
-.sidebar {
-  position: sticky;
-  top: var(--page-pad-y);
-  align-self: start;
-}
+/* ── BANNER (home only) ─────────────────────────────────────── */
 
-main { max-width: var(--content-max); min-width: 0; }
+.banner { margin-bottom: 2.5rem; }
 
-/* ── SIDEBAR ────────────────────────────────────────────────── */
-
-.sidebar-image {
+.banner img {
   display: block;
   width: 100%;
   height: auto;
-  margin-bottom: 1.5rem;
-  /* subtle border matches the muted line below — keeps the
-     papyrus from floating on white */
+  max-height: 240px;
+  object-fit: cover;
+  object-position: center 35%;
+  border-radius: 10px;
   border: 1px solid var(--rule);
 }
 
-.sidebar h1 {
-  font-size: 1.55rem;
-  font-weight: 500;
-  letter-spacing: 0.01em;
+.banner .caption {
+  display: block;
+  font-size: 0.82rem;
+  color: var(--muted);
+  margin-top: 0.55rem;
+  letter-spacing: 0;
+}
+
+/* ── HEADER ─────────────────────────────────────────────────── */
+
+header.site-header {
+  margin-bottom: 2.5rem;
+}
+
+header.site-header h1 {
+  font-size: 1.75rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  margin: 0 0 0.2rem;
+  line-height: 1.1;
+}
+
+header.site-header h1 a { color: var(--heading); border: none; }
+header.site-header h1 a:hover { color: var(--accent); }
+
+header.site-header .tagline {
+  color: var(--muted);
   margin: 0 0 1.25rem;
-  line-height: 1.2;
+  font-size: 0.95rem;
+  font-weight: 450;
 }
 
-.sidebar h1 a {
-  color: var(--heading);
-  border-bottom: none;
+/* nav as a horizontal row of restrained links */
+header.site-header nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.25rem;
+  font-size: 0.9rem;
+  font-weight: 500;
+  padding-bottom: 1.25rem;
+  border-bottom: 1px solid var(--rule);
 }
 
-.sidebar h1 a:hover { color: var(--accent); }
-
-.sidebar nav ul {
-  list-style: none;
-  padding: 0;
-  margin: 0 0 2rem;
+header.site-header nav a {
+  color: var(--muted);
+  border: none;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  font-size: 0.78rem;
 }
 
-.sidebar nav li { margin: 0.2rem 0; }
+header.site-header nav a:hover { color: var(--accent); }
+header.site-header nav a.current { color: var(--heading); }
 
-.sidebar nav a {
-  display: inline-block;
+/* ── ICON ROW ───────────────────────────────────────────────── */
+
+.iconrow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin: 1.25rem 0 0;
+}
+
+.iconrow a {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.4rem 0.7rem;
+  border: 1px solid var(--chip-br);
+  background: var(--chip-bg);
+  border-radius: 7px;
   color: var(--text);
-  border-bottom: none;
-  padding: 0.05rem 0;
-  font-size: 1.08rem;
+  font-size: 0.82rem;
+  font-weight: 500;
+  letter-spacing: 0;
 }
 
-.sidebar nav a:hover { color: var(--accent); }
-
-.sidebar nav a.current {
+.iconrow a:hover {
+  border-color: var(--accent);
   color: var(--accent);
-  font-style: italic;
 }
+
+.iconrow svg {
+  width: 15px;
+  height: 15px;
+  flex-shrink: 0;
+}
+
+/* ── BIO ────────────────────────────────────────────────────── */
+
+.bio { display: flow-root; margin-bottom: 1.5rem; }
 
 .portrait {
   float: right;
-  width: 140px;
+  width: 116px;
   height: auto;
-  margin: 0.25rem 0 1rem 1.5rem;
+  margin: 0.2rem 0 1rem 1.5rem;
+  border-radius: 8px;
   border: 1px solid var(--rule);
 }
 
-/* ── MAIN CONTENT ───────────────────────────────────────────── */
+/* ── MAIN ───────────────────────────────────────────────────── */
 
 main p { margin: 0 0 1rem; }
 main p:last-child { margin-bottom: 0; }
 
 main h2 {
-  font-size: 1.3rem;
-  font-weight: 500;
-  color: var(--heading);
-  margin: 2.75rem 0 1rem;
-  letter-spacing: 0.01em;
+  font-size: 0.82rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--muted);
+  margin: 2.5rem 0 1rem;
 }
 
 main h2:first-child { margin-top: 0; }
 
-main h3 {
-  font-size: 1.08rem;
-  font-weight: 600;
-  color: var(--heading);
-  margin: 1.75rem 0 0.5rem;
-}
-
-/* Links: warm brown, with a subtle underline-on-hover instead of
-   the default — quieter than a permanent underline, more visible
-   than a colour change alone */
 a {
   color: var(--accent);
   text-decoration: none;
   border-bottom: 1px solid transparent;
-  transition: border-color 120ms ease, color 120ms ease;
+  transition: border-color 100ms, color 100ms;
 }
-
-a:hover {
-  border-bottom-color: var(--accent);
-}
-
-a:focus-visible {
-  outline: 2px solid var(--accent);
-  outline-offset: 2px;
-  border-bottom-color: transparent;
-}
+a:hover { border-bottom-color: var(--accent); }
+a:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
 
 em, i { font-style: italic; }
 strong, b { font-weight: 600; }
 
-/* ── CONTACT BLOCK (HOME PAGE) ──────────────────────────────── */
-
-.contact {
-  margin-bottom: 2.25rem;
-  display: flow-root;   /* contains the floated portrait */
+/* Greek runs use Noto Sans (polytonic). Wrap Greek in <span lang="grc"> */
+[lang="grc"], [lang="el"] {
+  font-family: 'Noto Sans', sans-serif;
+  letter-spacing: 0;
 }
 
-.contact .name {
-  font-size: 1.35rem;
-  font-weight: 500;
-  color: var(--heading);
-  margin: 0 0 0.15rem;
-  letter-spacing: 0.01em;
-}
+/* ── LISTS ──────────────────────────────────────────────────── */
 
-.contact .role {
-  color: var(--muted);
-  margin: 0 0 1rem;
-  line-height: 1.45;
-}
-
-.contact .role a { color: var(--muted); }
-.contact .role a:hover { color: var(--accent); border-bottom-color: var(--accent); }
-
-.contact .links {
-  color: var(--muted);
-  line-height: 1.6;
-  font-size: 1.05rem;
-}
-
-.contact .links a { color: var(--accent); }
-
-.orcid-icon {
-  width: 14px;
-  height: 14px;
-  vertical-align: -2px;
-  margin-right: 0.25rem;
-}
-
-/* ── BIBLIOGRAPHIC LISTS ────────────────────────────────────── */
-/* Hanging indent: title flows back when it wraps. No bullets.
-   Standard academic citation look. */
-
-ul.entries {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
+ul.entries, ul.plain { list-style: none; padding: 0; margin: 0; }
 
 ul.entries li {
-  margin: 0 0 0.85rem;
-  padding-left: 1.5em;
-  text-indent: -1.5em;
+  margin: 0 0 0.8rem;
+  padding-left: 1.4em;
+  text-indent: -1.4em;
+  color: var(--text);
 }
-
 ul.entries li:last-child { margin-bottom: 0; }
-
-/* For shorter inline lists (Misc page, etc.) */
-ul.plain {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
 
 ul.plain li { margin: 0 0 0.6rem; }
 
-/* The middle dot separator between [text] and [recordings] */
-.sep {
+.tag {
+  display: inline-block;
+  font-size: 0.72rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
   color: var(--muted);
-  margin: 0 0.4em;
+  border: 1px solid var(--chip-br);
+  background: var(--chip-bg);
+  border-radius: 5px;
+  padding: 0.05rem 0.4rem;
+  margin-left: 0.4rem;
+  vertical-align: 1px;
+  text-indent: 0;
 }
+
+.sep { color: var(--muted); margin: 0 0.35em; }
 
 /* ── FOOTER ─────────────────────────────────────────────────── */
 
 .footer {
-  grid-column: 2;
-  margin-top: 6rem;
+  margin-top: 5rem;
   padding-top: 1.25rem;
   border-top: 1px solid var(--rule);
   color: var(--muted);
-  font-size: 0.95rem;
+  font-size: 0.82rem;
   line-height: 1.5;
 }
-
-.footer p { margin: 0.25rem 0; }
+.footer p { margin: 0.2rem 0; }
 .footer a { color: var(--muted); }
 .footer a:hover { color: var(--accent); border-bottom-color: var(--accent); }
 
 /* ── MOBILE ─────────────────────────────────────────────────── */
 
-@media (max-width: 760px) {
-  .layout {
-    grid-template-columns: 1fr;
-    padding: 1.75rem 1.25rem;
-    row-gap: 2rem;
-  }
-  .sidebar { position: static; }
-  .sidebar-image { max-width: 320px; }
-  .sidebar h1 { font-size: 1.7rem; }
-  .portrait { width: 110px; margin-left: 1rem; }
-  .footer { grid-column: 1; margin-top: 4rem; }
-  main h2 { margin-top: 2.25rem; }
-  :root { --size-body: 1.1rem; }
+@media (max-width: 700px) {
+  :root { --pad-y: 2.5rem; --size: 1rem; }
+  header.site-header h1 { font-size: 1.5rem; }
+  .banner img { max-height: 180px; }
+  .portrait { width: 92px; margin-left: 1rem; }
+  header.site-header nav { gap: 0.9rem; }
 }
 
-/* ── PRINT ──────────────────────────────────────────────────── */
-/* Keep things sensible if anyone prints a page */
-
 @media print {
-  .sidebar, .footer { display: none; }
-  .layout {
-    display: block;
-    max-width: none;
-    padding: 0;
-  }
-  main { max-width: none; }
-  a { color: inherit; border-bottom: none; }
+  .banner, header.site-header nav, .iconrow, .footer { display: none; }
+  :root { --bg: #fff; --text: #000; }
+  .container { max-width: none; padding: 0; }
+  a { color: inherit; border: none; }
 }
