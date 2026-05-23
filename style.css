@@ -462,3 +462,11 @@ details.karaoke summary::before {
 }
 details.karaoke[open] summary::before { transform: rotate(90deg); }
 details.karaoke ul.plain { margin-top: 1rem; }
+
+/* Home: visible email line below contact icons (assembled by script) */
+.np-email {
+  margin: 0.9rem 0 0;
+  font-size: 0.9rem;
+}
+.np-email a, .np-email span { color: var(--muted); border: none; }
+.np-email a:hover { color: var(--accent); }
