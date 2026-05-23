@@ -34,21 +34,11 @@
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/><path d="M16 13H8M16 17H8M10 9H8"/></svg>
       </a>
     </div>
-    <p class="np-email"><span id="email-text">tk539 [at] cam.ac.uk</span></p>
   </main>
   <script>
     (function () {
-      var user = "tk539", domain = "cam.ac.uk";
-      var addr = user + "@" + domain;
       var icon = document.getElementById("email-icon");
-      if (icon) { icon.href = "mailto:" + addr; }
-      var text = document.getElementById("email-text");
-      if (text) {
-        var a = document.createElement("a");
-        a.href = "mailto:" + addr;
-        a.textContent = addr;
-        text.parentNode.replaceChild(a, text);
-      }
+      if (icon) { icon.href = "mailto:" + icon.dataset.user + "@" + icon.dataset.domain; }
     })();
   </script>
 </body>
