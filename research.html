@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Research &mdash; Thomas Kelly</title>
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="theme-color" content="#0d1117">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;450;500;600;700&family=Noto+Sans:wght@400;500;600&display=swap">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="container">
+
+  <header class="site-header">
+    <h1><a href="index.html">Thomas Kelly</a></h1>
+    <nav>
+      <a href="research.html" class="current">Research</a>
+      <a href="publications.html">Publications</a>
+      <a href="teaching.html">Teaching</a>
+      <a href="misc.html">Misc.</a>
+    </nav>
+  </header>
+
+  <div class="banner tube" role="img" aria-label="Research areas drawn as a transit map">
+    <svg viewBox="0 0 1180 372" xmlns="http://www.w3.org/2000/svg" font-family="Inter, system-ui, -apple-system, sans-serif">
+      <defs>
+        <style>
+          .lbl { fill:#14181f; font-size:12.5px; font-weight:500; }
+          .leg { fill:#555c64; font-size:11.5px; font-weight:500; letter-spacing:.2px; }
+        </style>
+      </defs>
+    
+      
+      <rect x="0.75" y="0.75" width="1178.5" height="370.5" rx="13.25" fill="none" stroke="#e3e6ea" stroke-width="1.5"/>
+    
+      <!-- ===================== LINES ===================== -->
+      <!-- Ancient mathematics · Piccadilly blue -->
+      <path class="tline" d="M228 100 H470 V210" fill="none" stroke="#003688" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+      <!-- Texts & media · Circle yellow -->
+      <path class="tline" d="M470 210 H1000" fill="none" stroke="#FFD300" stroke-width="8" stroke-linecap="round"/>
+      <!-- Language · Central red -->
+      <path class="tline" d="M320 265 H800" fill="none" stroke="#E32017" stroke-width="8" stroke-linecap="round"/>
+      <!-- Knowledge organisation · District green (spanning line) -->
+      <path class="tline" d="M228 108 H320 L470 155 L760 202 H1000" fill="none" stroke="#00782A" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+    
+      <!-- ===================== CONNECTORS ===================== -->
+      <!-- Geometry <-> Technical language · red (language) -->
+      <path class="tline" d="M320 100 V265" fill="none" stroke="#E32017" stroke-width="8" stroke-linecap="round"/>
+      <!-- Papyrology <-> Sociolinguistics · yellow (texts & media) -->
+      <path class="tline" d="M470 210 V265" fill="none" stroke="#FFD300" stroke-width="8" stroke-linecap="round"/>
+    
+      <!-- ===================== ORDINARY STATIONS (name-side ticks) ===================== -->
+      <g>
+        <!-- Shorthand: label below red line -> stub points down -->
+        <rect x="617.2" y="265" width="5.6" height="11" rx="1.2" fill="#E32017"/>
+        <!-- Cicero: label below red line -> stub points down -->
+        <rect x="797.2" y="265" width="5.6" height="11" rx="1.2" fill="#E32017"/>
+      </g>
+    
+      <!-- ===================== INTERCHANGES (white rings) ===================== -->
+      <g fill="#ffffff" stroke="#1a1a1a" stroke-width="2">
+        <circle cx="228" cy="104" r="8.5"/>  <!-- Agrimensores (terminus) -->
+        <circle cx="320" cy="100" r="6.5"/>  <!-- Geometry -->
+        <circle cx="470" cy="100" r="6.5"/>  <!-- Problem texts -->
+        <circle cx="470" cy="155" r="6.5"/>  <!-- Diagrams -->
+        <circle cx="470" cy="210" r="8.5"/>  <!-- Papyrology (hub) -->
+        <circle cx="470" cy="265" r="6.5"/>  <!-- Sociolinguistics -->
+        <circle cx="320" cy="265" r="6.5"/>  <!-- Technical language -->
+        <circle cx="760" cy="206" r="8"/>    <!-- The codex -->
+        <circle cx="1000" cy="206" r="7"/>   <!-- Paratext -->
+      </g>
+    
+      <!-- ===================== LABELS ===================== -->
+      <g class="lbl maplabels">
+        <text x="228" y="78"  text-anchor="middle">Agrimensores</text>
+        <text x="320" y="72"  text-anchor="middle">Geometry</text>
+        <text x="498" y="100" text-anchor="start">Problem texts</text>
+        <text x="436" y="159" text-anchor="end">Diagrams</text>
+        <text x="436" y="214" text-anchor="end">Papyrology</text>
+        <text x="470" y="306" text-anchor="middle">Sociolinguistics</text>
+        <text x="300" y="290" text-anchor="end">Technical language</text>
+        <text x="620" y="294" text-anchor="middle">Shorthand</text>
+        <text x="800" y="294" text-anchor="middle">Cicero</text>
+        <text x="760" y="238" text-anchor="middle">The codex</text>
+        <text x="1000" y="238" text-anchor="middle">Paratext</text>
+      </g>
+    
+      <!-- ===================== LEGEND ===================== -->
+      <g transform="translate(0,344)" class="maplabels">
+        <g stroke="#d2d6da" stroke-width="0.75">
+          <rect x="60"  y="0" width="22" height="7" rx="3.5" fill="#003688"/>
+          <rect x="300" y="0" width="22" height="7" rx="3.5" fill="#FFD300"/>
+          <rect x="500" y="0" width="22" height="7" rx="3.5" fill="#00782A"/>
+          <rect x="760" y="0" width="22" height="7" rx="3.5" fill="#E32017"/>
+        </g>
+        <text class="leg" x="90"  y="7">Ancient mathematics</text>
+        <text class="leg" x="330" y="7">Texts &amp; media</text>
+        <text class="leg" x="530" y="7">Knowledge organisation</text>
+        <text class="leg" x="790" y="7">Language</text>
+      </g>
+    </svg>
+  </div>
+
+  <main>
+    <p>I am the Moses and Mary Finley Research Fellow at <a href="https://www.darwin.cam.ac.uk/">Darwin College</a>, Cambridge; a Visiting Researcher on <em><a href="https://agroma.ncl.ac.uk/">The Agrimensores and Roman Mathematics</a></em> (AgRoMa) at Newcastle; and a Stipendiary Lecturer in Classical Languages at <a href="https://www.magd.ox.ac.uk/people/dr-thomas-kelly/">Magdalen College</a>, Oxford.</p>
+
+    <p>I work on the languages, literature and intellectual history of the Greek and Roman world, with a particular focus on how linguistic approaches can help us understand technical and non-canonical texts, and on how knowledge was organised and transmitted. I am also interested in how adapting methodologies developed in other disciplines can help us ask new questions of ancient evidence. More details on the different strands of my research are given below.</p>
+
+    <p class="collab">If any of this overlaps with your own work, or if you would like to collaborate on something, then please get in touch.</p>
+
+    <h2>Ancient science and the structure of technical knowledge</h2>
+    <p>How was technical knowledge formalised, arranged, and made transmissible in antiquity? I work on ancient mathematics and the exact sciences &mdash; particularly on the diagrams of practical and problem-solving mathematics, which behave quite differently from the polished figures of the canonical tradition, and on Ptolemy&rsquo;s <em>Geographical Guide</em>, which turns the world into a structured list of coordinates. Through the AgRoMa project I also work on the mathematics of the Roman land-surveyors, the <em>agrimensores</em>, whose intensely practical geometry is bound up with law, administration, and the layout of the landscape itself. Across these cases I am interested in the apparatus &mdash; diagrammatic, linguistic, notational &mdash; through which technical material was given structure.</p>
+
+    <h2>Linguistic variation</h2>
+    <p>I am interested in variation in ancient Greek and Latin: how spelling, sound, and usage shift across writers and situations, and what that variation can tell us about the people who produced the texts. The documentary papyri of Roman Egypt, for instance, are full of &lsquo;mistakes&rsquo; in spelling &mdash; but a misspelling may record a sound change, a scribal habit, or neither. Distinguishing these calls for quantitative methods adapted from historical and corpus linguistics: I ask which patterns of variation are systematic, and in which direction, treating the evidence statistically rather than anecdotally.</p>
+
+    <h2>Text production and the material text</h2>
+    <p>How were ancient texts physically made, and how does that shape what they say? This strand takes in dictation and the role of the secretary &mdash; including the question of whether we can detect, from the language alone, when Cicero dictated a letter rather than writing it &mdash; as well as shorthand, copying, the layout of the page, and the long shift from roll to codex. These are not incidental to a text&rsquo;s meaning but part of how it came to exist, and they are where the science and the language meet: both are finally about how what was known got written down.</p>
+  </main>
+
+  <footer class="footer">
+    <p>&copy; 2026 Thomas Kelly</p>
+  </footer>
+
+</div>
+</body>
+</html>
