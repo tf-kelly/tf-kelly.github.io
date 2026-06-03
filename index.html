@@ -24,21 +24,29 @@
       <a href="misc.html">Misc.</a>
     </nav>
     <div class="np-contact">
-      <a id="email-icon" href="#" aria-label="Email" data-user="tk539" data-domain="cam.ac.uk">
+      <a id="email-link" href="#" data-user="tk539" data-domain="cam.ac.uk">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 5L2 7"/></svg>
+        <span class="label">Email</span>
       </a>
-      <a href="https://orcid.org/0000-0001-8656-9537" aria-label="ORCID">
+      <a href="https://orcid.org/0000-0001-8656-9537">
         <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.6 0 12 0zM7.4 18.4H5.5V7.6h1.9v10.8zm-.95-12.2a1.1 1.1 0 1 1 0-2.2 1.1 1.1 0 0 1 0 2.2zM18.5 14c0 3-1.9 4.4-4.7 4.4h-3.6V7.6h3.6c2.8 0 4.7 1.5 4.7 4.4v2zm-4.8-4.8h-1.6v7.5h1.6c2.3 0 3-1.4 3-3.7 0-2.2-.9-3.8-3-3.8z"/></svg>
+        <span class="label">ORCID</span>
       </a>
-      <a href="cv.pdf" aria-label="CV">
+      <a href="cv.pdf">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/><path d="M16 13H8M16 17H8M10 9H8"/></svg>
+        <span class="label">CV <span class="meta">(PDF)</span></span>
       </a>
     </div>
   </main>
   <script>
     (function () {
-      var icon = document.getElementById("email-icon");
-      if (icon) { icon.href = "mailto:" + icon.dataset.user + "@" + icon.dataset.domain; }
+      var el = document.getElementById("email-link");
+      if (el) {
+        var addr = el.dataset.user + "@" + el.dataset.domain;
+        el.href = "mailto:" + addr;
+        var label = el.querySelector(".label");
+        if (label) { label.textContent = addr; }
+      }
     })();
   </script>
 </body>
